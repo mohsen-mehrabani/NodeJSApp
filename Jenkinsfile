@@ -1,5 +1,4 @@
 pipeline {
-    agent {
         docker {
             image 'mehrabani/multi-server'
             label 'latest'
