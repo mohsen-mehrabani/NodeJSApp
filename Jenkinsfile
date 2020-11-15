@@ -1,12 +1,10 @@
 pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
+   agent {
+    docker {
+        image 'mehrabani/multi-server'
+        label 'latest'
+        registryUrl 'https://hub.docker.com/repository/docker/mehrabani/multi-server'
+        registryCredentialsId 'dockerhub'
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
+}
 }
