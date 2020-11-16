@@ -1,5 +1,4 @@
 pipeline {
-    agents{
         agent {
             dockerfile {
                 filename 'Dockerfile.dev'
@@ -48,7 +47,6 @@ pipeline {
             }
         }
     
-    }
     stages {
         stage('Back-end') {
             agent {
