@@ -4,49 +4,39 @@ pipeline {
                 filename 'Dockerfile.dev'
                 dir 'client'
                 args {
-                    '-v - /app/node_modules'
-                    '-v - ./client:/app'
+                    '-v /app/node_modules'
+                    '-v ./client:/app'
                 }
             }
-        }
-        agent {
             dockerfile {
                 filename 'Dockerfile.dev'
                 dir 'nginx'
             }
-        }            
-        agent {
             dockerfile {
                 filename 'Dockerfile.dev'
                 dir 'server'
                 args {
-                    '-v - /app/node_modules'
-                    '-v - ./server:/app'
+                    '-v /app/node_modules'
+                    '-v ./server:/app'
                 }
             }
-        }    
-        agent {
             dockerfile {
                 filename 'Dockerfile.dev'
                 dir 'worker'
                 args {
-                     '-v - REDIS_HOST=redis'
-                     '-v - REDIS_PORT=6379'
+                     '-v REDIS_HOST=redis'
+                     '-v REDIS_PORT=6379'
                 }
             }
-        }    
-        agent {
             docker {
                 image 'redis'
             }
-        }            
-        agent {
             docker {
             image 'postgres'
-            args  '-v - POSTGRES_PASSWORD=postgres_passwordp'
+            args  '-v POSTGRES_PASSWORD=postgres_passwordp'
             }
+
         }
-    
     stages {
         stage('Back-end') {
             agent {
