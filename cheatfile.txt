@@ -1,0 +1,3 @@
+sudo usermod -aG docker jenkins
+
+for solving jenkins permission on docker
